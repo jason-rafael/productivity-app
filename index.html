@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="id" class="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#0f766e">
   <title>Productivity Hub - Asisten Produktivitas Multi-Bahasa</title>
-  
+
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <style>
     :root {
@@ -21,20 +23,20 @@
       --primary-500: #14b8a6;
       --primary-400: #2dd4bf;
       --primary-100: #ccfbf1;
-      --primary-50:  #f0fdfa;
+      --primary-50: #f0fdfa;
 
       --bg-desktop: #e2e8f0;
       --bg-app: #f8fafc;
       --card-bg: #ffffff;
       --input-bg: #ffffff;
-      
+
       --text-main: #0f172a;
       --text-muted: #64748b;
       --text-light: #94a3b8;
-      
+
       --border-color: #cbd5e1;
       --border-light: #f1f5f9;
-      
+
       /* Priority Badge Colors */
       --priority-high: #ef4444;
       --priority-high-bg: #fee2e2;
@@ -73,7 +75,7 @@
       --border-light: #1e293b;
 
       --primary-100: #134e4a;
-      --primary-50:  #042f2e;
+      --primary-50: #042f2e;
 
       --priority-high-bg: #450a0a;
       --priority-medium-bg: #451a03;
@@ -232,8 +234,15 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .card {
@@ -363,10 +372,12 @@
       background: var(--priority-high);
       color: #ffffff;
     }
+
     .pill-btn[data-priority="medium"].active {
       background: var(--priority-medium);
       color: #ffffff;
     }
+
     .pill-btn[data-priority="low"].active {
       background: var(--priority-low);
       color: #ffffff;
@@ -479,9 +490,20 @@
       margin-top: 4px;
     }
 
-    .badge-high { background: var(--priority-high-bg); color: var(--priority-high); }
-    .badge-medium { background: var(--priority-medium-bg); color: #b45309; }
-    .badge-low { background: var(--priority-low-bg); color: #047857; }
+    .badge-high {
+      background: var(--priority-high-bg);
+      color: var(--priority-high);
+    }
+
+    .badge-medium {
+      background: var(--priority-medium-bg);
+      color: #b45309;
+    }
+
+    .badge-low {
+      background: var(--priority-low-bg);
+      color: #047857;
+    }
 
     .btn-delete-task {
       background: transparent;
@@ -723,7 +745,9 @@
       gap: 8px;
     }
 
-    .journal-select, .journal-date-input, .journal-textarea {
+    .journal-select,
+    .journal-date-input,
+    .journal-textarea {
       width: 100%;
       padding: 10px 12px;
       border: 1.5px solid var(--border-color);
@@ -812,7 +836,9 @@
     }
 
     @media (max-width: 480px) {
-      .bottom-nav { max-width: 100%; }
+      .bottom-nav {
+        max-width: 100%;
+      }
     }
 
     .nav-item {
@@ -954,8 +980,105 @@
       color: var(--text-muted);
       font-size: 0.82rem;
     }
+
+    /* Cloud Sync Badge & Notice */
+    .cloud-sync-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 5px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #ffffff;
+      transition: var(--transition-smooth);
+      cursor: default;
+      user-select: none;
+    }
+
+    .sync-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .sync-dot.syncing {
+      background-color: #f59e0b;
+      box-shadow: 0 0 6px #f59e0b;
+      animation: pulseSync 1.2s infinite;
+    }
+
+    .sync-dot.error {
+      background-color: #ef4444;
+      box-shadow: 0 0 6px #ef4444;
+    }
+
+    @keyframes pulseSync {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.25); opacity: 1; }
+      100% { transform: scale(0.9); opacity: 0.7; }
+    }
+
+    .firestore-notice-banner {
+      background: #fef2f2;
+      border: 1px solid #f87171;
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      color: #991b1b;
+      position: relative;
+      animation: fadeIn 0.3s ease;
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    html.dark .firestore-notice-banner {
+      background: #450a0a;
+      border-color: #dc2626;
+      color: #fecaca;
+    }
+
+    .firestore-notice-banner .notice-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .firestore-notice-banner code {
+      background: rgba(0, 0, 0, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: 600;
+      color: #b91c1c;
+    }
+
+    html.dark .firestore-notice-banner code {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fca5a5;
+    }
+
+    .btn-close-notice {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: inherit;
+      line-height: 1;
+    }
   </style>
 </head>
+
 <body>
 
   <div class="app-container">
@@ -967,6 +1090,12 @@
           <span class="brand-badge">PRO</span>
         </div>
         <div class="header-controls">
+          <!-- Cloud Sync Status Badge -->
+          <div id="sync-status-badge" class="cloud-sync-badge" title="Status Sinkronisasi Firebase">
+            <span class="sync-dot"></span>
+            <span id="sync-status-text">Cloud</span>
+          </div>
+
           <!-- Multi Language Selector -->
           <select id="lang-select" class="lang-select-dropdown" aria-label="Pilih Bahasa">
             <option value="id">🇮🇩 ID</option>
@@ -984,6 +1113,16 @@
       <div class="header-date" id="current-date">Selasa, 6 Okt 2026</div>
     </header>
 
+    <!-- Firestore Rules Notice Banner (hanya muncul jika akses firestore butuh konfigurasi) -->
+    <div id="firestore-notice" class="firestore-notice-banner" style="display:none; margin: 14px 16px 0;">
+      <button type="button" class="btn-close-notice" id="btn-close-notice" title="Tutup">&times;</button>
+      <div class="notice-title">⚠️ Izin Akses Firestore Dibutuhkan</div>
+      <div>Data tetap tersimpan di browser ini, tetapi sinkronisasi antar perangkat membutuhkan izin di Firebase Console:</div>
+      <div style="margin-top:6px;">Buka <strong>Firebase Console &gt; Firestore Database &gt; Rules</strong>, lalu ganti menjadi:</div>
+      <div style="margin:6px 0;"><code>allow read, write: if true;</code></div>
+      <div>kemudian klik <strong>Publish</strong> agar semua perangkat bisa terhubung.</div>
+    </div>
+
     <!-- TAB 1: TUGAS -->
     <section id="tab-tasks" class="tab-content active">
       <div class="progress-banner">
@@ -999,7 +1138,8 @@
       <div class="card">
         <span class="form-label" data-i18n="add_task_label">Tambah Tugas Baru</span>
         <div class="task-input-group">
-          <input type="text" id="task-input" class="task-text-input" placeholder="Tuliskan tugas penting Anda..." data-i18n-ph="task_placeholder" />
+          <input type="text" id="task-input" class="task-text-input" placeholder="Tuliskan tugas penting Anda..."
+            data-i18n-ph="task_placeholder" />
           <button type="button" id="btn-add-task" class="btn-submit-task">
             + <span data-i18n="btn_add">Tambah</span>
           </button>
@@ -1009,13 +1149,16 @@
           <span class="form-label" style="font-size: 0.7rem;" data-i18n="priority_label">Tingkat Prioritas</span>
           <div class="priority-pill-grid">
             <button type="button" class="pill-btn active" data-priority="high">
-              <span class="pill-dot" style="background:var(--priority-high)"></span> <span data-i18n="p_high">Tinggi</span>
+              <span class="pill-dot" style="background:var(--priority-high)"></span> <span
+                data-i18n="p_high">Tinggi</span>
             </button>
             <button type="button" class="pill-btn" data-priority="medium">
-              <span class="pill-dot" style="background:var(--priority-medium)"></span> <span data-i18n="p_medium">Sedang</span>
+              <span class="pill-dot" style="background:var(--priority-medium)"></span> <span
+                data-i18n="p_medium">Sedang</span>
             </button>
             <button type="button" class="pill-btn" data-priority="low">
-              <span class="pill-dot" style="background:var(--priority-low)"></span> <span data-i18n="p_low">Rendah</span>
+              <span class="pill-dot" style="background:var(--priority-low)"></span> <span
+                data-i18n="p_low">Rendah</span>
             </button>
           </div>
         </div>
@@ -1126,7 +1269,9 @@
             </div>
           </div>
 
-          <textarea id="journal-text" class="journal-textarea" placeholder="Tuliskan pelajaran penting, progres harian, atau ide..." data-i18n-ph="journal_placeholder"></textarea>
+          <textarea id="journal-text" class="journal-textarea"
+            placeholder="Tuliskan pelajaran penting, progres harian, atau ide..."
+            data-i18n-ph="journal_placeholder"></textarea>
 
           <button type="submit" class="btn-save-journal">
             💾 <span data-i18n="btn_save_journal">Simpan Refleksi</span>
@@ -1140,17 +1285,26 @@
     <!-- Bottom Nav -->
     <nav class="bottom-nav">
       <button type="button" class="nav-item active" data-tab="tab-tasks">
-        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+        <svg class="nav-icon" viewBox="0 0 24 24">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
         <span class="nav-label" data-i18n="nav_tasks">Tugas</span>
       </button>
 
       <button type="button" class="nav-item" data-tab="tab-focus">
-        <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <svg class="nav-icon" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
         <span class="nav-label" data-i18n="nav_focus">Fokus</span>
       </button>
 
       <button type="button" class="nav-item" data-tab="tab-journal">
-        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+        <svg class="nav-icon" viewBox="0 0 24 24">
+          <path d="M12 20h9"></path>
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+        </svg>
         <span class="nav-label" data-i18n="nav_journal">Jurnal</span>
       </button>
     </nav>
@@ -1164,15 +1318,46 @@
     <div class="modal-card">
       <div style="font-size:2.5rem; margin-bottom:8px;">🎉</div>
       <div class="modal-title" data-i18n="modal_finish_title">Sesi Fokus Selesai!</div>
-      <div class="modal-desc" data-i18n="modal_finish_desc">Kerja bagus! Luangkan waktu sejenak untuk mengabadikan ide atau evaluasi di Jurnal Refleksi.</div>
-      <button type="button" id="btn-modal-open-journal" class="btn-modal-primary" data-i18n="modal_btn_write">📝 Tulis Refleksi Sekarang</button>
-      <button type="button" id="btn-modal-close" class="btn-modal-secondary" data-i18n="modal_btn_later">Nanti Saja</button>
+      <div class="modal-desc" data-i18n="modal_finish_desc">Kerja bagus! Luangkan waktu sejenak untuk mengabadikan ide
+        atau evaluasi di Jurnal Refleksi.</div>
+      <button type="button" id="btn-modal-open-journal" class="btn-modal-primary" data-i18n="modal_btn_write">📝 Tulis
+        Refleksi Sekarang</button>
+      <button type="button" id="btn-modal-close" class="btn-modal-secondary" data-i18n="modal_btn_later">Nanti
+        Saja</button>
     </div>
   </div>
 
+  <!-- Firebase SDKs (Compat version: bekerja di file:// lokal dan hosting web) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. DICTIONARY MULTI-BAHASA
+      // 1. FIREBASE CONFIGURATION & INITIALIZATION
+      const firebaseConfig = {
+        apiKey: "AIzaSyA2ZQaY-gm-WecRZfydIKHoVZrjDGwEyFw",
+        authDomain: "productivity-app-20f4f.firebaseapp.com",
+        projectId: "productivity-app-20f4f",
+        storageBucket: "productivity-app-20f4f.firebasestorage.app",
+        messagingSenderId: "6612329736",
+        appId: "1:6612329736:web:f4835f56d1ee33890f78bd"
+      };
+
+      let db = null;
+      let isFirebaseConnected = false;
+
+      try {
+        if (typeof firebase !== 'undefined') {
+          if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+          }
+          db = firebase.firestore();
+        }
+      } catch (err) {
+        console.warn("Inisialisasi Firebase:", err);
+      }
+
+      // 2. DICTIONARY MULTI-BAHASA
       const translations = {
         id: {
           greeting: "Selamat Hari Produktif! 👋",
@@ -1213,7 +1398,10 @@
           toast_task_deleted: "🗑️ Tugas dihapus",
           toast_journal_saved: "💾 Refleksi disimpan!",
           toast_journal_deleted: "🗑️ Refleksi dihapus",
-          toast_break_ended: "🌴 Waktu istirahat selesai!"
+          toast_break_ended: "🌴 Waktu istirahat selesai!",
+          cloud_connected: "Cloud Terhubung",
+          cloud_syncing: "Sinkronisasi...",
+          cloud_offline: "Offline"
         },
         en: {
           greeting: "Have a Productive Day! 👋",
@@ -1254,7 +1442,10 @@
           toast_task_deleted: "🗑️ Task deleted",
           toast_journal_saved: "💾 Reflection saved!",
           toast_journal_deleted: "🗑️ Reflection deleted",
-          toast_break_ended: "🌴 Break time ended!"
+          toast_break_ended: "🌴 Break time ended!",
+          cloud_connected: "Cloud Connected",
+          cloud_syncing: "Syncing...",
+          cloud_offline: "Offline"
         },
         ja: {
           greeting: "生産的な一日を！ 👋",
@@ -1295,21 +1486,89 @@
           toast_task_deleted: "🗑 タスクを削除しました",
           toast_journal_saved: "💾 記録を保存しました！",
           toast_journal_deleted: "🗑️ 記録を削除しました",
-          toast_break_ended: "🌴 休憩時間が終了しました！"
+          toast_break_ended: "🌴 休憩時間が終了しました！",
+          cloud_connected: "クラウド接続済",
+          cloud_syncing: "同期中...",
+          cloud_offline: "オフライン"
         }
       };
 
-      // State Aplikasi & Data (deklarasi sebelum dipanggil oleh applyLanguage / renderTasks)
+      // State Aplikasi & Data Lokal (Cache langsung siap pakai)
       let currentLang = localStorage.getItem('ph_lang') || 'id';
       let currentTheme = localStorage.getItem('ph_theme') || 'light';
 
       let tasks = JSON.parse(localStorage.getItem('ph_tasks')) || [
-        { id: '1', title: 'Perencanaan Strategis Mingguan', priority: 'high', completed: false }
+        { id: '1', title: 'Perencanaan Strategis Mingguan', priority: 'high', completed: false, createdAt: Date.now() }
       ];
       let selectedPriority = 'high';
       let activeFilter = 'all';
 
       let journals = JSON.parse(localStorage.getItem('ph_journals')) || [];
+      let stats = JSON.parse(localStorage.getItem('ph_stats')) || { sessions: 0, totalMinutes: 0 };
+      let customDurations = JSON.parse(localStorage.getItem('ph_custom_durations')) || {
+        work: 25,
+        shortBreak: 5,
+        longBreak: 15
+      };
+
+      let timerInterval = null;
+      let currentMode = 'work';
+      let totalSeconds = customDurations.work * 60;
+      let timeLeft = totalSeconds;
+      let isRunning = false;
+
+      // Status UI Helper
+      function updateSyncStatus(status, customText) {
+        const badge = document.getElementById('sync-status-badge');
+        const dot = badge ? badge.querySelector('.sync-dot') : null;
+        const text = document.getElementById('sync-status-text');
+        if (!badge || !dot || !text) return;
+
+        dot.className = 'sync-dot';
+        if (status === 'connected') {
+          isFirebaseConnected = true;
+          text.textContent = customText || (translations[currentLang] ? translations[currentLang].cloud_connected : 'Cloud');
+          badge.title = 'Tersambung ke Firebase (Sinkron antar semua perangkat)';
+        } else if (status === 'syncing') {
+          dot.classList.add('syncing');
+          text.textContent = customText || (translations[currentLang] ? translations[currentLang].cloud_syncing : 'Syncing...');
+          badge.title = 'Sedang menyinkronkan data dengan Cloud Firebase...';
+        } else {
+          isFirebaseConnected = false;
+          dot.classList.add('error');
+          text.textContent = customText || (translations[currentLang] ? translations[currentLang].cloud_offline : 'Offline');
+          badge.title = 'Offline atau Firestore rules memerlukan konfigurasi.';
+        }
+      }
+
+      function handleFirestoreError(err) {
+        if (!err) return;
+        console.warn("Firestore status:", err);
+        if (err.code === 'permission-denied' || (err.message && err.message.toLowerCase().includes('permission'))) {
+          updateSyncStatus('error', 'Cek Rules');
+          const noticeEl = document.getElementById('firestore-notice');
+          if (noticeEl) noticeEl.style.display = 'block';
+        } else {
+          updateSyncStatus('error');
+        }
+      }
+
+      const noticeCloseBtn = document.getElementById('btn-close-notice');
+      if (noticeCloseBtn) {
+        noticeCloseBtn.addEventListener('click', () => {
+          document.getElementById('firestore-notice').style.display = 'none';
+        });
+      }
+
+      function updateDateDisplay(lang) {
+        const dateEl = document.getElementById('current-date');
+        if (!dateEl) return;
+        const now = new Date();
+        const localeMap = { id: 'id-ID', en: 'en-US', ja: 'ja-JP' };
+        const locale = localeMap[lang] || 'id-ID';
+        const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+        dateEl.textContent = now.toLocaleDateString(locale, options);
+      }
 
       function applyLanguage(lang) {
         currentLang = lang;
@@ -1330,6 +1589,10 @@
         });
 
         document.getElementById('header-greeting').textContent = translations[lang].greeting;
+        updateDateDisplay(lang);
+        if (isFirebaseConnected) {
+          updateSyncStatus('connected');
+        }
         renderTasks();
         renderJournals();
       }
@@ -1381,21 +1644,7 @@
         });
       });
 
-      // 2. FOKUS TIMER DENGAN DURASI KUSTOM BEBAS
-      let customDurations = JSON.parse(localStorage.getItem('ph_custom_durations')) || {
-        work: 25,
-        shortBreak: 5,
-        longBreak: 15
-      };
-
-      let timerInterval = null;
-      let currentMode = 'work';
-      let totalSeconds = customDurations.work * 60;
-      let timeLeft = totalSeconds;
-      let isRunning = false;
-
-      let stats = JSON.parse(localStorage.getItem('ph_stats')) || { sessions: 0, totalMinutes: 0 };
-
+      // 3. FOKUS TIMER DENGAN DURASI KUSTOM
       const inputWork = document.getElementById('input-time-work');
       const inputShort = document.getElementById('input-time-short');
       const inputLong = document.getElementById('input-time-long');
@@ -1409,6 +1658,12 @@
         customDurations.shortBreak = Math.max(1, parseInt(inputShort.value) || 5);
         customDurations.longBreak = Math.max(1, parseInt(inputLong.value) || 15);
         localStorage.setItem('ph_custom_durations', JSON.stringify(customDurations));
+
+        if (db) {
+          db.collection('productivity').doc('timerSettings').set(customDurations, { merge: true }).catch(err => {
+            handleFirestoreError(err);
+          });
+        }
 
         // Reset timer ke durasi baru mode aktif jika tidak sedang berjalan
         if (!isRunning) {
@@ -1498,6 +1753,13 @@
                 stats.totalMinutes += customDurations.work;
                 localStorage.setItem('ph_stats', JSON.stringify(stats));
                 updateStats();
+
+                if (db) {
+                  db.collection('productivity').doc('stats').set(stats, { merge: true }).catch(err => {
+                    handleFirestoreError(err);
+                  });
+                }
+
                 document.getElementById('reflection-modal').classList.add('show');
               } else {
                 showToast(translations[currentLang].toast_break_ended);
@@ -1524,7 +1786,7 @@
         document.getElementById('stat-minutes').textContent = `${stats.totalMinutes}m`;
       }
 
-      // 3. TASK MANAGER
+      // 4. TASK MANAGER (REAL-TIME CLOUD + OFFLINE)
       const priorityBtns = document.querySelectorAll('.priority-pill-grid .pill-btn');
       priorityBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1573,7 +1835,7 @@
         filtered.forEach(task => {
           const card = document.createElement('div');
           card.className = `task-touch-card ${task.completed ? 'completed' : ''}`;
-          
+
           let priorityKey = 'p_' + task.priority;
           let badgeClass = task.priority === 'high' ? 'badge-high' : task.priority === 'medium' ? 'badge-medium' : 'badge-low';
 
@@ -1583,50 +1845,105 @@
             </div>
             <div class="task-center-content">
               <div class="task-text-title">${escapeHtml(task.title)}</div>
-              <span class="badge-pill ${badgeClass}">${translations[currentLang][priorityKey]}</span>
+              <span class="badge-pill ${badgeClass}">${translations[currentLang][priorityKey] || task.priority}</span>
             </div>
             <button class="btn-delete-task" title="Hapus">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
             </button>
           `;
 
-          card.addEventListener('click', (e) => {
+          // Toggle Selesai
+          card.addEventListener('click', async (e) => {
             if (e.target.closest('.btn-delete-task')) return;
-            task.completed = !task.completed;
-            localStorage.setItem('ph_tasks', JSON.stringify(tasks));
-            renderTasks();
+            const nextCompleted = !task.completed;
+
+            if (db && task.id && !task.id.startsWith('local_')) {
+              try {
+                await db.collection('tasks').doc(task.id).update({ completed: nextCompleted });
+              } catch (err) {
+                console.warn("Toggle offline:", err);
+                task.completed = nextCompleted;
+                localStorage.setItem('ph_tasks', JSON.stringify(tasks));
+                renderTasks();
+                handleFirestoreError(err);
+              }
+            } else {
+              task.completed = nextCompleted;
+              localStorage.setItem('ph_tasks', JSON.stringify(tasks));
+              renderTasks();
+            }
           });
 
-          card.querySelector('.btn-delete-task').addEventListener('click', (e) => {
+          // Hapus Tugas
+          card.querySelector('.btn-delete-task').addEventListener('click', async (e) => {
             e.stopPropagation();
-            tasks = tasks.filter(t => t.id !== task.id);
-            localStorage.setItem('ph_tasks', JSON.stringify(tasks));
-            renderTasks();
-            showToast(translations[currentLang].toast_task_deleted);
+            if (db && task.id && !task.id.startsWith('local_')) {
+              try {
+                await db.collection('tasks').doc(task.id).delete();
+                showToast(translations[currentLang].toast_task_deleted);
+              } catch (err) {
+                console.warn("Delete offline:", err);
+                tasks = tasks.filter(t => t.id !== task.id);
+                localStorage.setItem('ph_tasks', JSON.stringify(tasks));
+                renderTasks();
+                showToast(translations[currentLang].toast_task_deleted);
+                handleFirestoreError(err);
+              }
+            } else {
+              tasks = tasks.filter(t => t.id !== task.id);
+              localStorage.setItem('ph_tasks', JSON.stringify(tasks));
+              renderTasks();
+              showToast(translations[currentLang].toast_task_deleted);
+            }
           });
 
           taskListEl.appendChild(card);
         });
       }
 
-      document.getElementById('btn-add-task').addEventListener('click', () => {
+      async function handleAddTask() {
         const input = document.getElementById('task-input');
         const text = input.value.trim();
         if (!text) return;
 
-        tasks.unshift({
-          id: Date.now().toString(),
+        const newTask = {
           title: text,
           priority: selectedPriority,
-          completed: false
-        });
-        localStorage.setItem('ph_tasks', JSON.stringify(tasks));
-        renderTasks();
+          completed: false,
+          createdAt: Date.now()
+        };
+
         input.value = '';
-        showToast(translations[currentLang].toast_task_added);
+
+        if (db) {
+          try {
+            await db.collection('tasks').add(newTask);
+            showToast(translations[currentLang].toast_task_added);
+          } catch (err) {
+            console.warn("Add task offline fallback:", err);
+            tasks.unshift({ id: 'local_' + Date.now(), ...newTask });
+            localStorage.setItem('ph_tasks', JSON.stringify(tasks));
+            renderTasks();
+            showToast(translations[currentLang].toast_task_added);
+            handleFirestoreError(err);
+          }
+        } else {
+          tasks.unshift({ id: 'local_' + Date.now(), ...newTask });
+          localStorage.setItem('ph_tasks', JSON.stringify(tasks));
+          renderTasks();
+          showToast(translations[currentLang].toast_task_added);
+        }
+      }
+
+      document.getElementById('btn-add-task').addEventListener('click', handleAddTask);
+      document.getElementById('task-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleAddTask();
+        }
       });
 
-      // 4. JURNAL REFLEKSI
+      // 5. JURNAL REFLEKSI (REAL-TIME CLOUD + OFFLINE)
       document.getElementById('journal-date').value = new Date().toISOString().split('T')[0];
 
       function renderJournals() {
@@ -1650,18 +1967,32 @@
             <button class="btn-delete-task" style="margin-top:6px; font-size:0.75rem;" title="Hapus">🗑️ Delete</button>
           `;
 
-          card.querySelector('.btn-delete-task').addEventListener('click', () => {
-            journals = journals.filter(j => j.id !== item.id);
-            localStorage.setItem('ph_journals', JSON.stringify(journals));
-            renderJournals();
-            showToast(translations[currentLang].toast_journal_deleted);
+          card.querySelector('.btn-delete-task').addEventListener('click', async () => {
+            if (db && item.id && !item.id.startsWith('local_')) {
+              try {
+                await db.collection('journals').doc(item.id).delete();
+                showToast(translations[currentLang].toast_journal_deleted);
+              } catch (err) {
+                console.warn("Delete journal offline:", err);
+                journals = journals.filter(j => j.id !== item.id);
+                localStorage.setItem('ph_journals', JSON.stringify(journals));
+                renderJournals();
+                showToast(translations[currentLang].toast_journal_deleted);
+                handleFirestoreError(err);
+              }
+            } else {
+              journals = journals.filter(j => j.id !== item.id);
+              localStorage.setItem('ph_journals', JSON.stringify(journals));
+              renderJournals();
+              showToast(translations[currentLang].toast_journal_deleted);
+            }
           });
 
           listEl.appendChild(card);
         });
       }
 
-      document.getElementById('journal-form').addEventListener('submit', (e) => {
+      document.getElementById('journal-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const subject = document.getElementById('journal-subject').value;
         const date = document.getElementById('journal-date').value;
@@ -1669,11 +2000,33 @@
 
         if (!text) return;
 
-        journals.unshift({ id: Date.now().toString(), subject, date, text });
-        localStorage.setItem('ph_journals', JSON.stringify(journals));
-        renderJournals();
+        const newJournal = {
+          subject,
+          date,
+          text,
+          createdAt: Date.now()
+        };
+
         document.getElementById('journal-text').value = '';
-        showToast(translations[currentLang].toast_journal_saved);
+
+        if (db) {
+          try {
+            await db.collection('journals').add(newJournal);
+            showToast(translations[currentLang].toast_journal_saved);
+          } catch (err) {
+            console.warn("Add journal offline:", err);
+            journals.unshift({ id: 'local_' + Date.now(), ...newJournal });
+            localStorage.setItem('ph_journals', JSON.stringify(journals));
+            renderJournals();
+            showToast(translations[currentLang].toast_journal_saved);
+            handleFirestoreError(err);
+          }
+        } else {
+          journals.unshift({ id: 'local_' + Date.now(), ...newJournal });
+          localStorage.setItem('ph_journals', JSON.stringify(journals));
+          renderJournals();
+          showToast(translations[currentLang].toast_journal_saved);
+        }
       });
 
       // Modal Actions
@@ -1690,7 +2043,7 @@
       });
 
       function escapeHtml(str) {
-        return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+        return (str || '').replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m]));
       }
 
       // Initial Render
@@ -1698,7 +2051,113 @@
       renderTimer();
       updateStats();
       renderJournals();
+
+      // 6. FIREBASE REALTIME LISTENERS (SINKRONISASI SEMUA DEVICE)
+      if (db) {
+        updateSyncStatus('syncing');
+
+        // A. Sinkronisasi Tugas Antar Perangkat
+        db.collection('tasks').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
+          if (snapshot.empty && tasks.length > 0 && tasks[0].id === '1') {
+            // Migrasi awal sample task lokal ke Firestore jika database masih kosong
+            db.collection('tasks').add({
+              title: tasks[0].title,
+              priority: tasks[0].priority,
+              completed: tasks[0].completed,
+              createdAt: Date.now()
+            }).catch(handleFirestoreError);
+            return;
+          }
+
+          const remoteTasks = [];
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            remoteTasks.push({
+              id: doc.id,
+              title: data.title || '',
+              priority: data.priority || 'medium',
+              completed: !!data.completed,
+              createdAt: data.createdAt || 0
+            });
+          });
+
+          tasks = remoteTasks;
+          localStorage.setItem('ph_tasks', JSON.stringify(tasks));
+          renderTasks();
+          updateSyncStatus('connected');
+        }, (err) => {
+          handleFirestoreError(err);
+        });
+
+        // B. Sinkronisasi Jurnal Antar Perangkat
+        db.collection('journals').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
+          const remoteJournals = [];
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+            remoteJournals.push({
+              id: doc.id,
+              subject: data.subject || '',
+              date: data.date || '',
+              text: data.text || '',
+              createdAt: data.createdAt || 0
+            });
+          });
+
+          journals = remoteJournals;
+          localStorage.setItem('ph_journals', JSON.stringify(journals));
+          renderJournals();
+        }, (err) => {
+          handleFirestoreError(err);
+        });
+
+        // C. Sinkronisasi Statistik Fokus (Sessions & Menit)
+        db.collection('productivity').doc('stats').onSnapshot((docSnap) => {
+          if (docSnap.exists) {
+            const data = docSnap.data();
+            stats = {
+              sessions: Number(data.sessions) || 0,
+              totalMinutes: Number(data.totalMinutes) || 0
+            };
+            localStorage.setItem('ph_stats', JSON.stringify(stats));
+            updateStats();
+          } else {
+            db.collection('productivity').doc('stats').set(stats, { merge: true }).catch(() => {});
+          }
+        }, (err) => {
+          handleFirestoreError(err);
+        });
+
+        // D. Sinkronisasi Durasi Timer Kustom
+        db.collection('productivity').doc('timerSettings').onSnapshot((docSnap) => {
+          if (docSnap.exists) {
+            const data = docSnap.data();
+            if (data.work && data.shortBreak && data.longBreak) {
+              customDurations = {
+                work: Number(data.work) || 25,
+                shortBreak: Number(data.shortBreak) || 5,
+                longBreak: Number(data.longBreak) || 15
+              };
+              localStorage.setItem('ph_custom_durations', JSON.stringify(customDurations));
+              inputWork.value = customDurations.work;
+              inputShort.value = customDurations.shortBreak;
+              inputLong.value = customDurations.longBreak;
+              if (!isRunning) {
+                totalSeconds = customDurations[currentMode] * 60;
+                timeLeft = totalSeconds;
+                renderTimer();
+              }
+            }
+          } else {
+            db.collection('productivity').doc('timerSettings').set(customDurations, { merge: true }).catch(() => {});
+          }
+        }, (err) => {
+          handleFirestoreError(err);
+        });
+      } else {
+        updateSyncStatus('offline');
+      }
     });
   </script>
 </body>
+
 </html>
